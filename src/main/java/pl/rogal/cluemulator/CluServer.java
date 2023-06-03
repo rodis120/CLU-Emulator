@@ -10,11 +10,13 @@ import java.util.Arrays;
 
 public class CluServer {
 
+    private final InetAddress ip;
     private final CluCipher cipher;
     private final MessageProcessor processor;
     private DatagramSocket socket;
 
     public CluServer(InetAddress ip, int port, CluCipher cipher, MessageProcessor processor) throws SocketException {
+        this.ip = ip;
         this.cipher = cipher;
         this.processor = processor;
 
@@ -31,7 +33,7 @@ public class CluServer {
 
                     byte[] decrypted = this.cipher.decrypt(Arrays.copyOf(packet.getData(), packet.getLength()));
 
-                    String response = processor.process(new String(decrypted, StandardCharsets.UTF_8));
+                    String response = processor.process(new String(decrypted, StandardCharsets.UTF_8), ip);
 
                     byte[] encrypted = this.cipher.encrypt(response.getBytes(StandardCharsets.UTF_8));
 

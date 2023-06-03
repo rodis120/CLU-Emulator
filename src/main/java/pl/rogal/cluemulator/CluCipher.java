@@ -7,7 +7,7 @@ import java.util.Base64;
 
 public class CluCipher {
 
-    private static final String ALGORITHM = "AES/CBC/PKCS7Padding";
+    private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
 
     private final SecretKeySpec key;
     private final IvParameterSpec iv;

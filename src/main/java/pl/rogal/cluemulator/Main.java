@@ -8,16 +8,16 @@ public class Main {
 
     public static void main(String[] args) throws UnknownHostException {
 
-        var ip = InetAddress.getLocalHost();
+        InetAddress ip = InetAddress.getByName("localhost");
         int port = 1234;
 
-        String key = "";
-        String iv = "";
+        String key = "***REMOVED***";
+        String iv = "***REMOVED***";
 
         CluCipher cipher = new CluCipher(key, iv);
 
         try {
-            CluServer server = new CluServer(ip,  port, cipher, null);
+            CluServer server = new CluServer(ip,  port, cipher, new TestProcessor());
             server.start();
         } catch (SocketException e) {
             e.printStackTrace();
