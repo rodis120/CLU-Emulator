@@ -11,8 +11,8 @@ public class Main {
         InetAddress ip = InetAddress.getByName("localhost");
         int port = 1234;
 
-        String key = "***REMOVED***";
-        String iv = "***REMOVED***";
+        String key = "";
+        String iv = "";
 
         CluCipher cipher = new CluCipher(key, iv);
 
